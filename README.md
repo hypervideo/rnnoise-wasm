@@ -15,9 +15,11 @@ This repository contains the necessary utilities to build the library using a Do
 ### Building the module
 
 Building is straightforward, run:
-```
+
+```bash
 npm run build
 ```
+
 The repository already has a pre-compiled version under the **dist** folder, running the above command will replace it with the newly compiled binaries and glue wasm .js file respectively.
 
 In order to facilitate the build with docker the following prebuilt image is used [trzeci/emscripten/](https://hub.docker.com/r/trzeci/emscripten/) however, it is slightly altered by installing autotools components necessary for building rnnoise.
@@ -33,4 +35,3 @@ Following a build two files are generated under **dist**, the actual webassembly
 
 The repo is structured so it can be used as a npm dependency, with the entry point in dist/index.js, be mindful as using index.js
 automatically implies that rnnoise.wasm needs to be present as well, thus for a normal npm build system one must explicitly copy rnnoise.wasm to the project structure.
-
