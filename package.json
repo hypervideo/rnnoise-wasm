@@ -1,10 +1,10 @@
 {
-    "name": "@jitsi/rnnoise-wasm",
+    "name": "@timephy/rnnoise-wasm",
     "description": "Rnnoise sub-module compiled with emscripten as web assembly module",
     "version": "0.1.0",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/jitsi/rnnoise-wasm.git"
+        "type": "git",
+        "url": "git+https://github.com/timephy/rnnoise-wasm.git"
     },
     "main": "index.js",
     "scripts": {
@@ -15,9 +15,9 @@
     "dependencies": {},
     "devDependencies": {},
     "licenses": [
-      {
-        "type": "Apache-2.0",
-        "url": "http://www.apache.org/licenses/LICENSE-2.0"
-      }
+        {
+            "type": "Apache-2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
     ]
-  }
+}
