@@ -1,23 +1,41 @@
 {
     "name": "@timephy/rnnoise-wasm",
-    "description": "Rnnoise sub-module compiled with emscripten as web assembly module",
-    "version": "0.1.0",
+    "description": "This library implements the RNNoise noise suppression library as a WASM module for use in web frontends.",
+    "version": "0.5.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/timephy/rnnoise-wasm.git"
     },
-    "main": "index.js",
     "scripts": {
         "build:dockerimage": "docker image inspect -f '.' emscripten-autotools || docker build -t emscripten-autotools .",
         "build:emscripten": "docker run --rm -v $(pwd):/src emscripten-autotools bash -x ./build.sh",
-        "build": "npm run build:dockerimage && npm run build:emscripten"
+        "build:typescript": "tsc",
+        "build": "npm run build:dockerimage && npm run build:emscripten && npm run build:typescript"
     },
-    "dependencies": {},
-    "devDependencies": {},
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./NoiseSuppressorWorklet": {
+            "types": "./dist/NoiseSuppressorWorklet.d.ts",
+            "default": "./dist/NoiseSuppressorWorklet.js"
+        }
+    },
+    "devDependencies": {
+        "@types/audioworklet": "^0.0.56",
+        "@types/emscripten": "^1.39.13",
+        "publint": "^0.2.8",
+        "typescript": "^5.5.2"
+    },
     "licenses": [
         {
             "type": "Apache-2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         }
-    ]
+    ],
+    "type": "module"
 }
