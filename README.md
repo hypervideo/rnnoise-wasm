@@ -59,7 +59,7 @@ async function example() {
 Building is straightforward, run:
 
 ```bash
-# To build RNNoise, compile it into WASM, and build Typescript
+# To build RNNoise, compile it into WASM, and build TypeScript
 npm run build
 ```
 
