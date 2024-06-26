@@ -1,5 +1,7 @@
 # TypeScript out dir
+/dist
 
+# Node Modules
 /node_modules
 
 # Prerequisites
