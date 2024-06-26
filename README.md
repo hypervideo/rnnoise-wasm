@@ -26,7 +26,7 @@ This library was originally forked from [@jitsi/rnnoise-wasm](https://github.com
 ```ts
 import { NoiseSuppressorWorklet_Name } from "@timephy/rnnoise-wasm"
 // This is an example how to get the script path using Vite, may be different when using other build tools
-// NOTE: `?worker&url` is important (`worker` to generate a working script, `url` to get its url load it)
+// NOTE: `?worker&url` is important (`worker` to generate a working script, `url` to get its url to load it)
 import NoiseSuppressorWorklet from "@timephy/rnnoise-wasm/NoiseSuppressorWorklet?worker&url"
 
 async function example() {
