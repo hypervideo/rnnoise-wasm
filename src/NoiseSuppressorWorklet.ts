@@ -158,12 +158,13 @@ class NoiseSuppressorWorklet extends AudioWorkletProcessor {
                 this._denoisedBufferIndx + outData.length,
             )
 
-            // NOTE: To outout on both output channels (added by Copilot)
-            // Copy denoised frame to each channel of the output
-            for (let i = 0; i < outputs[0].length; i++) {
-                outputs[0][i].set(denoisedFrame, 0)
-            }
-            // NOTE: end
+            // // NOTE: To outout on both output channels (added by Copilot)
+            // // Copy denoised frame to each channel of the output
+            // for (let i = 0; i < outputs[0].length; i++) {
+            //     outputs[0][i].set(denoisedFrame, 0)
+            // }
+            // // NOTE: end
+            outData.set(denoisedFrame, 0)
 
             this._denoisedBufferIndx += outData.length
         }
