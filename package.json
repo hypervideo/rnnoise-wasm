@@ -1,19 +1,20 @@
 {
     "name": "@timephy/rnnoise-wasm",
     "description": "This library implements the RNNoise noise suppression library as a WASM module for use in web frontends.",
-    "version": "0.5.0",
+    "version": "1.0.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/timephy/rnnoise-wasm.git"
     },
     "scripts": {
+        "build": "npm run build:dockerimage && npm run build:emscripten && npm run build:typescript",
+        "lint": "publint",
         "build:dockerimage": "docker image inspect -f '.' emscripten-autotools || docker build -t emscripten-autotools .",
         "build:emscripten": "docker run --rm -v $(pwd):/src emscripten-autotools bash -x ./build.sh",
-        "build:typescript": "tsc",
-        "build": "npm run build:dockerimage && npm run build:emscripten && npm run build:typescript"
+        "build:typescript": "tsc"
     },
     "files": [
-        "dist"
+        "dist/"
     ],
     "exports": {
         ".": {
