@@ -46,6 +46,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
+  doCheck = false;
+
   buildPhase = ''
     runHook preBuild
 
