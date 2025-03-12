@@ -1,5 +1,6 @@
 {
-    "name": "@timephy/rnnoise-wasm",
+    "name": "@hypervideo/rnnoise",
+    "private": true,
     "description": "This library implements the RNNoise noise suppression library as a WASM module for use in web frontends.",
     "version": "1.0.0",
     "repository": {

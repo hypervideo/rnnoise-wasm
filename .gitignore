@@ -39,3 +39,7 @@
 
 # VisualCode config
 .vscode
+/.direnv/
+/result
+
+/src/generated
