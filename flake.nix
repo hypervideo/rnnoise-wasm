@@ -27,8 +27,8 @@
           '';
         };
 
-        rnnoise-wasm-sync-js = pkgs.stdenv.mkDerivation {
-          name = "rnnoise-wasm-sync-js";
+        rnnoise-sync-js = pkgs.stdenv.mkDerivation {
+          name = "rnnoise-sync-js";
 
           outputHashMode = "recursive";
           outputHashAlgo = "sha256";
@@ -63,7 +63,7 @@
           '';
         };
 
-        rnnoise-wasm = pkgs.buildNpmPackage {
+        build-rnnoise-wasm = from-source: pkgs.buildNpmPackage {
           name = "@hypervideo/rnnoise";
           src = ./.;
           npmDepsHash = "sha256-G2fzFvcH2I2ykeCSq5asQECPiwesHrBIoktQhqtA7Ag=";
@@ -74,10 +74,11 @@
             typescript
           ];
 
-          preBuild = ''
-            mkdir src/generated
-            cp -r ${rnnoise-wasm-sync-js}/* src/generated/
-          '';
+          preBuild =
+            if from-source then ''
+              mkdir src/generated
+              cp -r ${rnnoise-sync-js}/* src/generated/
+            '' else "";
 
           npmBuildScript = "build:typescript";
 
@@ -91,17 +92,14 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          inputsFrom = [ rnnoise-wasm rnnoise-wasm-sync-js ];
-
-          nativeBuildInputs = with pkgs; [ just ];
+          inputsFrom = [ rnnoise-sync-js ];
+          nativeBuildInputs = with pkgs; [ typescript just ];
         };
 
         packages = {
-          inherit rnnoise-wasm rnnoise-wasm-build-script rnnoise-wasm-sync-js;
-        };
-
-        overlays.default = final: prev: {
-          inherit rnnoise-wasm;
+          rnnoise-wasm = build-rnnoise-wasm false;
+          rnnoise-wasm-from-source = build-rnnoise-wasm true;
+          inherit rnnoise-wasm-build-script rnnoise-sync-js;
         };
       }
     );

@@ -41,5 +41,3 @@
 .vscode
 /.direnv/
 /result
-
-/src/generated
