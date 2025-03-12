@@ -32,13 +32,13 @@
 
           outputHashMode = "recursive";
           outputHashAlgo = "sha256";
-          outputHash = "sha256-xRWjoIfrvUGmY+Mo78o3wd2PKuVJ8c6bca2/yiAAiJA=";
+          outputHash = "sha256-hFrdfUaSpcHNaONQiNBw4Baiek8QTFgLlHwP1OPYtHw=";
 
           src = pkgs.fetchFromGitHub {
             owner = "xiph";
             repo = "rnnoise";
-            rev = "70f1d256acd4b34a572f999a05c87bf00b67730d";
-            sha256 = "sha256-fkSy7Sqnx0yLfGLciHf8PaptzFVzFAeRrhE4R5z8hSw=";
+            rev = "2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd";
+            sha256 = "sha256-NPmkFeMBj6QuDCOqFaSpvLduuHXBr0cR+KnNY7PC6YI=";
           };
 
           nativeBuildInputs = with pkgs; [
